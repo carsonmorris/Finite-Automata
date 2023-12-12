@@ -1,0 +1,42 @@
+# Project #2: NFA
+* Author: Carson Morris, Joseph Cierzan
+* Class: CS361 Section #002
+* Semester: Fall 2022
+
+## Overview
+This project takes in a text file representing an NFA and produces a DFA equivalent that can then be used to test strings for the described NFA. The files we created are implementations or extensions of given files and builds off the concepts used in P1-DFA.
+
+## Reflection
+Overall, this project wasn't the hardest thing in the world, but the hardest aspect was the eClosures and getDFA functions. The only issue, if it can be called that, is that we couldn't get our merged states to appear in the exact same order as what is shown on the assignment. For example, when the assignment would show a state labeled [r, s], we would get a state labeled [s, r]. Or when the assignment showed a state labeled: [1, 0, 2], we would get a state labeled [0, 2, 1]. This isn't necessarily an issue though, since they represent the same state and a state can technically be labeled anything and the machine would still function the exact same. It was just frustrating that we couldn't quite figure out why this was happening, and that this issue only happened to *some* states and not all of them. The program still works, and strings are still accepted, but we wished we could get exact matches to the expected result. This issue likely stems from the use of a depth first search so we considered completely redoing that section, but it seemed unnecessary since what we had was accepting the strings correctly the way that it was. (Note: I'm not sure who's grading this, but Sarah told us that the state names not perfectly matching is okay! So please keep that in mind!)
+
+Aside from this, everything was pretty straight forward and was quite similar to the construction of the DFA in P1. This project was interesting because when we were going in we thought this would be an exhaustive program of attempting all possible paths through an NFA until at least one accepts the string, but it makes sense that this would be an inefficient way of doing this. It makes much more sense to convert the NFA to a DFA and then conduct the tests that way. In the end, everything functions as expected and we are glad that this didn't take as much time as we were seemingly lead to believe it would take!
+
+## Compiling and Using
+The layout of the project is as follows:
+|-- fa
+|   |-- FAInterface.java
+|   |-- State.java
+|   |-- dfa
+|   |     |-- DFAInterface.java
+|   |     |-- DFA.java
+|   |     |-- DFAState.java
+|   |-- nfa
+|       |-- NFADriver.java
+|       |-- NFAInterface.java
+|-- tests
+    |-- p2tc0.txt
+    |-- p2tc1.txt
+    |-- p2tc2.txt
+    |-- p2tc3.txt
+
+
+To compile project from the top directory of these files:
+$javac fa/nfa/*.java
+
+To run fa.nfa.NFADriver, put your input file in the tests folder and run:
+$java fa.nfa.NFADriver ./tests/[your input file name].txt
+
+The console will display the DFA equivalence of the NFA described in the test file with the list of states, the alphabet being used, the transition table, the start state, and the set of final states. Then, for each string being tested, it prints "yes" if the string is accepted, or "no" if the string is not accepted.
+
+## Sources used
+Nothing outside of class materials or previous projects in previous classes.

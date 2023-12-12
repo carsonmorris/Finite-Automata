@@ -1,0 +1,36 @@
+# Project #3: Regular Expressions
+* Author: Carson Morris, Joseph Cierzan
+* Class: CS361 Section #002
+* Semester: Fall 2022
+
+## Overview
+This project takes in a text file containing a regular expression and produces an NFA equivalent to it. The NFA can then be used on the strings, also provided in the text file, to determine if they are accepted by the regular expression. The file we worked on was RE.java, the rest were provided. This project makes use of CS361FA.jar to access and run our NFA/DFA files from P1 and P2, rather than having them directly in the workspace.
+
+## Reflection
+Overall this project was fairly difficult but only in a logistics way. Working with the CS361FA.jar file was the most interesting/weird part because calling functions from the NFA class always appeared as errors in the IDE, when they obviously weren't since our compile and run commands worked as expected. Truly the most difficult aspect of this project was just knowing how to break apart the regular expression into different chunks and put them all back together. Converting a regular expression to the NFA is hard enough on paper, so it was very weird doing it for this project. Specifically, the issues came from us not realizing we need to make many different NFAs based on certain chunks of the regular expression and concatenate them together. We did this by using recursive calls to our functions and "consume" the provided regular expression piece-by-piece as we went, until the string was consumed and our final NFA was built.
+
+In the end, we had a working project and it came together easier than we expected. Our only concern is generating our Javadocs, because when we tried to generate them with the provided command, it wouldn't work since it was pointing out errors about NFA functions not existing (when they did). If we put the necessary files directly in the workspace, we got what we were looking for, but that wasn't exactly specified in the instructions, so we are unsure how you will be testing this and if it will work on your end. All in all, the project works as expected, it was smaller than we thought it would be, and we are glad to be done!
+
+## Compiling and Using
+The layout of the project is as follows:
+|-- re
+| |-REDriver.java
+| |-REInterface.java
+|-- tests
+| |-- p3tc1.txt
+| |-- p3tc2.txt
+| |-- p3tc3.txt
+|-- CS361FA.jar
+|-- CS361FAdocs.zip
+
+
+To compile project from the top directory of these files:
+$ javac -cp ".:./CS361FA.jar" re/REDriver.java
+
+To run the REDriver, put your input file in the tests folder and run:
+$ java -cp ".:./CS361FA.jar" re.REDriver ./tests/[your input file name].txt
+
+The console will display, for each string being tested, a "yes" if the string is accepted by the regular expression, or "no" if the string is not accepted.
+
+## Sources used
+Nothing outside of class materials or previous projects in previous classes.
