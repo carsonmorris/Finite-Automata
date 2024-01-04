@@ -6,3 +6,4 @@ The Finite Automata Programs Created in Java:
 
 # Contributors
 - Carson Morris
+- Joseph Cierzan
